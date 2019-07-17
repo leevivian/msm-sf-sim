@@ -3,13 +3,14 @@
 <title>Enhancement Simulator</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="styles" href="/index.css"/>
+<link rel="styles" href="index.css"/>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 <body>
 
     <!-- Header -->
-    <header class="container mt-2">
+    <header class="pt-3 mb-3" style="background-color: cadetblue; color: white;">
         <div class="row">
             <div class="col-md" style="text-align: center">
                 <h4>MapleStory M Enhancement Simulator</h4>
@@ -26,27 +27,22 @@
         <form>
             <div class="form-group row">    
                 <label class="col-sm-6 col-form-label" style="padding-left: 0">Starting Star Force: </label>
-                <select class="form-control col-sm-6" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <select class="form-control col-sm-6" id="startStars" onchange="checkValidStarInput()">
                 </select>
             </div>
-        </form>
-        <form>
             <div class="form-group row">    
                 <label class="col-sm-6 col-form-label" style="padding-left: 0">End Star Force: </label>
-                <select class="form-control col-sm-6" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <select class="form-control col-sm-6" id="endStars" onchange="checkValidStarInput()">
                 </select>
             </div>
+            <div class="text-center mb-3">
+                <button type="button" class="btn btn-primary" id="startSimulation" onclick="simulateEnhancement()">Start</button>
+                <button type="button" class="btn btn-secondary" id="clearSimulation" onclick="clearOutput()">Clear</button>
+            </div>
         </form>
+        <div id="output">
+        </div>
     </div>
+    <script type="text/javascript" src="simulate.js"></script>
 </body>
 </html>
