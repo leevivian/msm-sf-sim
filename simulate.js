@@ -1,12 +1,12 @@
-var min = 1,
-    max = 30,
-    startSelect = document.getElementById('startStars');
-    var startOption = document.createElement('option');
-    startOption.value = 0;
-    startOption.innerHTML = "0";
-    startSelect.appendChild(startOption);
+var min = 1, max = 30;
+startSelect = document.getElementById('startStars');
+endSelect = document.getElementById('endStars');
 
-    endSelect = document.getElementById('endStars');
+// Starting Star Force can be 0 if the equipment has no stars on it
+var startOption = document.createElement('option');
+startOption.value = 0;
+startOption.innerHTML = "0";
+startSelect.appendChild(startOption);
 
 for (var i = min; i <= max; i++) {
     var startOption = document.createElement('option');
@@ -42,6 +42,11 @@ function getStarInputs() {
     return new Map([['start', startStarsValue], ['end', endStarsValue]]);
 }
 
+/**
+ * Function for enabling/disabling the button that starts the simulation.
+ * Ensure the UI shows that the simulation can only be run if the start and end
+ * input values are valid.
+ */
 function checkValidStarInput () {
     var starValues = getStarInputs();
     if (starValues.get('end') <= starValues.get('start')) {
@@ -51,6 +56,10 @@ function checkValidStarInput () {
     }
 }
 
+/**
+ * Function to simulate the probabilities of star force enhancement,
+ * given the start and end star force values from the user.
+ */
 function simulateEnhancement () {
     var outputLog = document.getElementById('output');
     outputLog.innerHTML = "";
@@ -83,6 +92,9 @@ function simulateEnhancement () {
     outputLog.appendChild(end);
 }
 
+/**
+ * Function to clear the logs outputted from the simulation.
+ */
 function clearOutput () {
     var outputLog = document.getElementById('output');
     outputLog.innerHTML = "";
