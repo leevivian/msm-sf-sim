@@ -32,6 +32,19 @@ var enhancementTable = new Map([
     [10, new Map([["success", 55], ["maintain", 45], ["degraded", 0], ["destroyed", 0], ["cost", 800000]])],
 ]);
 
+var luckyEnhancementTable = new Map([
+    [1, new Map([["success", 100], ["cost", 10000]])],
+    [2, new Map([["success", 100], ["maintain", 0], ["degraded", 0], ["destroyed", 0], ["cost", 15000]])],
+    [3, new Map([["success", 95], ["maintain", 5], ["degraded", 0], ["destroyed", 0], ["cost", 20000]])],
+    [4, new Map([["success", 90], ["maintain", 10], ["degraded", 0], ["destroyed", 0], ["cost", 55000]])],
+    [5, new Map([["success", 85], ["maintain", 15], ["degraded", 0], ["destroyed", 0], ["cost", 100000]])],
+    [6, new Map([["success", 80], ["maintain", 20], ["degraded", 0], ["destroyed", 0], ["cost", 200000]])],
+    [7, new Map([["success", 75], ["maintain", 25], ["degraded", 0], ["destroyed", 0], ["cost", 300000]])],
+    [8, new Map([["success", 70], ["maintain", 30], ["degraded", 0], ["destroyed", 0], ["cost", 400000]])],
+    [9, new Map([["success", 65], ["maintain", 35], ["degraded", 0], ["destroyed", 0], ["cost", 600000]])],
+    [10, new Map([["success", 60], ["maintain", 40], ["degraded", 0], ["destroyed", 0], ["cost", 800000]])],
+]);
+
 function getStarInputs() {
     var startStars = document.getElementById('startStars') || Map();
     var startStarsValue = parseInt(startStars.options[startStars.selectedIndex].value, 10) || 0;
