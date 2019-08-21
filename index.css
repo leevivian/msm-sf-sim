@@ -5,3 +5,10 @@ label {
 .input-checkbox {
     margin: 0 1rem 0 0;
 }
+
+.output {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    height: 17rem;
+}
