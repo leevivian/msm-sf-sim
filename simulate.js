@@ -30,8 +30,20 @@ var enhancementTable = new Map([
     [8, new Map([["success", 65], ["maintain", 35], ["degraded", 0], ["destroyed", 0], ["cost", 400000]])],
     [9, new Map([["success", 60], ["maintain", 40], ["degraded", 0], ["destroyed", 0], ["cost", 600000]])],
     [10, new Map([["success", 55], ["maintain", 45], ["degraded", 0], ["destroyed", 0], ["cost", 800000]])],
+    [11, new Map([["success", 50], ["maintain", 35], ["degraded", 10], ["destroyed", 5], ["cost", 1000000]])],
+    [12, new Map([["success", 45], ["maintain", 40], ["degraded", 10], ["destroyed", 5], ["cost", 1400000]])],
+    [13, new Map([["success", 40], ["maintain", 40], ["degraded", 15], ["destroyed", 5], ["cost", 1800000]])],
+    [14, new Map([["success", 35], ["maintain", 45], ["degraded", 15], ["destroyed", 5], ["cost", 2200000]])],
+    [15, new Map([["success", 30], ["maintain", 45], ["degraded", 20], ["destroyed", 5], ["cost", 2600000]])],
+    [16, new Map([["success", 25], ["maintain", 50], ["degraded", 20], ["destroyed", 5], ["cost", 3000000]])],
+    [17, new Map([["success", 20], ["maintain", 50], ["degraded", 25], ["destroyed", 5], ["cost", 3500000]])],
+    [18, new Map([["success", 15], ["maintain", 55], ["degraded", 25], ["destroyed", 5], ["cost", 4000000]])],
+    [19, new Map([["success", 10], ["maintain", 55], ["degraded", 30], ["destroyed", 5], ["cost", 4500000]])],
+    [20, new Map([["success", 5], ["maintain", 60], ["degraded", 30], ["destroyed", 5], ["cost", 5000000]])],
 ]);
 
+// Getting "lucky" assumes an extra 5% is added to the probability of success, taken away from the
+// probability of maintain.
 var luckyEnhancementTable = new Map([
     [1, new Map([["success", 100], ["cost", 10000]])],
     [2, new Map([["success", 100], ["maintain", 0], ["degraded", 0], ["destroyed", 0], ["cost", 15000]])],
