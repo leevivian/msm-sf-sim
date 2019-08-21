@@ -19,8 +19,16 @@
             </div>
         </div>
         <div>
-            <div class="col-md" style="text-align: center; padding-bottom: 0.15rem;">
-                <p>Based off <a href="https://lukishi.com/enhancement-table/" target="_blank">Lukishi's Enhancement Chart.</a></p>
+            <div class="col-md" style="width: 50%; margin: auto; text-align: center; padding-bottom: 1rem;">
+                <div>
+                    A basic RNG application for MSM star force enhancing that simulates total number of attempts and
+                    mesos spent to reach a given star force level. For more information about  
+                    enhancing and forging equipment, check out this 
+                    <a href="https://www.reddit.com/r/MapleStoryM/comments/976cg3/sea_maplestorym_cm_guide_part_1_item_forge/">reddit guide</a>.
+                </div>
+                <div class="mt-1">
+                    Probabilities used here are based off of <a href="https://lukishi.com/enhancement-table/" target="_blank">Lukishi's Enhancement Chart.</a>
+                </div>
             </div>
         </div>
     </header>
@@ -45,7 +53,8 @@
                 <button type="button" class="btn btn-secondary" id="clearSimulation" onclick="clearOutput()">Clear</button>
             </div>
         </form>
-        <div id="output">
+        <div class="output">
+            <div id="output"></div>
         </div>
     </div>
     <script type="text/javascript" src="simulate.js"></script>
