@@ -17,10 +17,12 @@ for (var i = min; i <= max; i++) {
     endSelect.appendChild(endOption);
 }
 
+startSelect.removeChild(startSelect.lastChild);
+
 checkValidStarInput();
 
 var enhancementTable = new Map([
-    [1, new Map([["success", 100], ["cost", 10000]])],
+    [1, new Map([["success", 100], ["maintain", 0], ["degraded", 0], ["destroyed", 0], ["cost", 10000]])],
     [2, new Map([["success", 95], ["maintain", 100], ["degraded", 0], ["destroyed", 0], ["cost", 15000]])],
     [3, new Map([["success", 90], ["maintain", 100], ["degraded", 0], ["destroyed", 0], ["cost", 20000]])],
     [4, new Map([["success", 85], ["maintain", 100], ["degraded", 0], ["destroyed", 0], ["cost", 55000]])],
@@ -54,18 +56,27 @@ var enhancementTable = new Map([
 
 // Getting "lucky" assumes an extra 5% is added to the probability of success, taken away from the
 // probability of maintain.
-var luckyEnhancementTable = new Map([
-    [1, new Map([["success", 100], ["cost", 10000]])],
-    [2, new Map([["success", 100], ["maintain", 0], ["degraded", 0], ["destroyed", 0], ["cost", 15000]])],
-    [3, new Map([["success", 95], ["maintain", 5], ["degraded", 0], ["destroyed", 0], ["cost", 20000]])],
-    [4, new Map([["success", 90], ["maintain", 10], ["degraded", 0], ["destroyed", 0], ["cost", 55000]])],
-    [5, new Map([["success", 85], ["maintain", 15], ["degraded", 0], ["destroyed", 0], ["cost", 100000]])],
-    [6, new Map([["success", 80], ["maintain", 20], ["degraded", 0], ["destroyed", 0], ["cost", 200000]])],
-    [7, new Map([["success", 75], ["maintain", 25], ["degraded", 0], ["destroyed", 0], ["cost", 300000]])],
-    [8, new Map([["success", 70], ["maintain", 30], ["degraded", 0], ["destroyed", 0], ["cost", 400000]])],
-    [9, new Map([["success", 65], ["maintain", 35], ["degraded", 0], ["destroyed", 0], ["cost", 600000]])],
-    [10, new Map([["success", 60], ["maintain", 40], ["degraded", 0], ["destroyed", 0], ["cost", 800000]])],
-]);
+function applyLuckMinigame() {
+    for (enhancement in enhancementTable) {
+        enhancement.set('success') = enhancement.get('success') + 5;
+        enhancement.set('maintain') = enhancement.get('maintain') - 5;
+    }
+}
+
+function applyLuckyScroll() {
+    for (enhancement in enhancementTable) {
+        enhancement.set('success') = enhancement.get('success') + 5;
+        enhancement.set('maintain') = enhancement.get('maintain') - 5;
+    }
+}
+
+function applyShieldScroll() {
+
+}
+
+function applyShieldingScroll() {
+    
+}
 
 function getStarInputs() {
     var startStars = document.getElementById('startStars') || Map();
@@ -120,8 +131,8 @@ function simulateEnhancement () {
             currentSf--;
         } else if (randomNum < nextEnhancement.get("destroyed")) {
             output1.innerHTML += "<span style='color:red'>Destroyed!</span> SF" + currentSf;
-            destroyed =  true;
-            console.log(document.getElementById('continue').checked);
+            destroyed = true;
+            // destroyed =  document.getElementById('continue').checked ? false : true;
         }
 
         output1.innerHTML += "<br />" + "Total Mesos: " + currentMesos.toLocaleString() + "<br />";
