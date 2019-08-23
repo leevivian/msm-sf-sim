@@ -1,7 +1,7 @@
 
 var min = 1, max = 30;
-startSelect = document.getElementById('start-stars');
-endSelect = document.getElementById('end-stars');
+let startSelect = document.getElementById('start-stars');
+let endSelect = document.getElementById('end-stars');
 
 // Starting Star Force can be 0 if the equipment has no stars on it
 var startOption = document.createElement('option');
@@ -11,8 +11,8 @@ startSelect.appendChild(startOption);
 
 for (var i = min; i <= max; i++) {
     var startOption = document.createElement('option');
-    startOption.value = i;
-    startOption.innerHTML = i;
+    startOption.value = i.toString(10);
+    startOption.innerHTML = i.toString(10);
     startSelect.appendChild(startOption);
     var endOption = startOption.cloneNode(true);
     endSelect.appendChild(endOption);
@@ -50,7 +50,7 @@ class EnhancementTable {
     }
 
     showTable() {
-        console.log(et)
+        console.log(this.et)
     }
 }
 
