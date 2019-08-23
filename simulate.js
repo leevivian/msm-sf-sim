@@ -1,6 +1,7 @@
+
 var min = 1, max = 30;
-startSelect = document.getElementById('startStars');
-endSelect = document.getElementById('endStars');
+startSelect = document.getElementById('start-stars');
+endSelect = document.getElementById('end-stars');
 
 // Starting Star Force can be 0 if the equipment has no stars on it
 var startOption = document.createElement('option');
@@ -79,10 +80,10 @@ function applyShieldingScroll() {
 }
 
 function getStarInputs() {
-    var startStars = document.getElementById('startStars') || Map();
+    var startStars = document.getElementById('start-stars') || Map();
     var startStarsValue = parseInt(startStars.options[startStars.selectedIndex].value, 10) || 0;
 
-    var endStars = document.getElementById('endStars') || Map();
+    var endStars = document.getElementById('end-stars') || Map();
     var endStarsValue = parseInt(endStars.options[endStars.selectedIndex].value, 10) || 0;
 
     return new Map([['start', startStarsValue], ['end', endStarsValue]]);
@@ -96,9 +97,9 @@ function getStarInputs() {
 function checkValidStarInput () {
     var starValues = getStarInputs();
     if (starValues.get('end') <= starValues.get('start')) {
-        document.getElementById('startSimulation').disabled = true;
+        document.getElementById('start-simulation').disabled = true;
     } else {
-        document.getElementById('startSimulation').disabled = false;
+        document.getElementById('start-simulation').disabled = false;
     }
 }
 
@@ -131,8 +132,8 @@ function simulateEnhancement () {
             currentSf--;
         } else if (randomNum < nextEnhancement.get("destroyed")) {
             output1.innerHTML += "<span style='color:red'>Destroyed!</span> SF" + currentSf;
-            destroyed = true;
-            // destroyed =  document.getElementById('continue').checked ? false : true;
+            // destroyed = true;
+            destroyed =  document.getElementById('continue').checked ? false : true;
         }
 
         output1.innerHTML += "<br />" + "Total Mesos: " + currentMesos.toLocaleString() + "<br />";
@@ -149,7 +150,11 @@ function simulateEnhancement () {
 /**
  * Function to clear the logs outputted from the simulation.
  */
-function clearOutput () {
+function clearOutput() {
     var outputLog = document.getElementById('output');
     outputLog.innerHTML = "";
+}
+
+function renderHTML() {
+
 }
