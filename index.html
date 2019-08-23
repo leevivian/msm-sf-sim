@@ -27,8 +27,6 @@
             <label>End Star Force: </label>
             <select id="end-stars" onchange="checkValidStarInput()"></select>
 
-            <label><input type="checkbox" id="continue" class="input-checkbox">Continue if destroyed</label>
-
             <div>
                 <button type="button" id="start-simulation" onclick="simulateEnhancement()">Start</button>
                 <button type="button" id="clear-simulation" onclick="clearOutput()">Clear</button>
@@ -36,7 +34,10 @@
 
         </form>
 
-        <div id="output"></div>
+        <div id="output">
+            <p id="simulation-output"></p>
+            <p style="text-align: center" id="simulation-end"></p>
+        </div>
 
     </div>
 

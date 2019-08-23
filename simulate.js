@@ -5,7 +5,7 @@ endSelect = document.getElementById('end-stars');
 
 // Starting Star Force can be 0 if the equipment has no stars on it
 var startOption = document.createElement('option');
-startOption.value = 0;
+startOption.value = "0";
 startOption.innerHTML = "0";
 startSelect.appendChild(startOption);
 
@@ -22,62 +22,79 @@ startSelect.removeChild(startSelect.lastChild);
 
 checkValidStarInput();
 
-var enhancementTable = new Map([
-    [1, new Map([["success", 100], ["maintain", 0], ["degraded", 0], ["destroyed", 0], ["cost", 10000]])],
-    [2, new Map([["success", 95], ["maintain", 100], ["degraded", 0], ["destroyed", 0], ["cost", 15000]])],
-    [3, new Map([["success", 90], ["maintain", 100], ["degraded", 0], ["destroyed", 0], ["cost", 20000]])],
-    [4, new Map([["success", 85], ["maintain", 100], ["degraded", 0], ["destroyed", 0], ["cost", 55000]])],
-    [5, new Map([["success", 80], ["maintain", 100], ["degraded", 0], ["destroyed", 0], ["cost", 100000]])],
-    [6, new Map([["success", 75], ["maintain", 100], ["degraded", 0], ["destroyed", 0], ["cost", 200000]])],
-    [7, new Map([["success", 70], ["maintain", 100], ["degraded", 0], ["destroyed", 0], ["cost", 300000]])],
-    [8, new Map([["success", 65], ["maintain", 100], ["degraded", 0], ["destroyed", 0], ["cost", 400000]])],
-    [9, new Map([["success", 60], ["maintain", 100], ["degraded", 0], ["destroyed", 0], ["cost", 600000]])],
-    [10, new Map([["success", 55], ["maintain", 100], ["degraded", 0], ["destroyed", 0], ["cost", 800000]])],
-    [11, new Map([["success", 50], ["maintain", 85], ["degraded", 95], ["destroyed", 100], ["cost", 1000000]])],
-    [12, new Map([["success", 45], ["maintain", 85], ["degraded", 95], ["destroyed", 100], ["cost", 1400000]])],
-    [13, new Map([["success", 40], ["maintain", 80], ["degraded", 95], ["destroyed", 100], ["cost", 1800000]])],
-    [14, new Map([["success", 35], ["maintain", 80], ["degraded", 95], ["destroyed", 100], ["cost", 2200000]])],
-    [15, new Map([["success", 30], ["maintain", 75], ["degraded", 95], ["destroyed", 100], ["cost", 2600000]])],
-    [16, new Map([["success", 25], ["maintain", 75], ["degraded", 95], ["destroyed", 100], ["cost", 3000000]])],
-    [17, new Map([["success", 20], ["maintain", 70], ["degraded", 95], ["destroyed", 100], ["cost", 3500000]])],
-    [18, new Map([["success", 15], ["maintain", 70], ["degraded", 95], ["destroyed", 100], ["cost", 4000000]])],
-    [19, new Map([["success", 10], ["maintain", 65], ["degraded", 95], ["destroyed", 100], ["cost", 4500000]])],
-    [20, new Map([["success", 5], ["maintain", 65], ["degraded", 95], ["destroyed", 100], ["cost", 5000000]])],
-    [21, new Map([["success", 1], ["maintain", 50], ["degraded", 90], ["destroyed", 100], ["cost", 6000000]])],
-    [22, new Map([["success", 1], ["maintain", 50], ["degraded", 90], ["destroyed", 100], ["cost", 7000000]])],
-    [23, new Map([["success", 1], ["maintain", 50], ["degraded", 90], ["destroyed", 100], ["cost", 8000000]])],
-    [24, new Map([["success", 1], ["maintain", 50], ["degraded", 90], ["destroyed", 100], ["cost", 9000000]])],
-    [25, new Map([["success", 1], ["maintain", 50], ["degraded", 90], ["destroyed", 100], ["cost", 10000000]])],
-    [26, new Map([["success", 1], ["maintain", 40], ["degraded", 85], ["destroyed", 100], ["cost", 11800000]])],
-    [27, new Map([["success", 1], ["maintain", 40], ["degraded", 85], ["destroyed", 100], ["cost", 14900000]])],
-    [28, new Map([["success", 1], ["maintain", 40], ["degraded", 85], ["destroyed", 100], ["cost", 18000000]])],
-    [29, new Map([["success", 1], ["maintain", 40], ["degraded", 85], ["destroyed", 100], ["cost", 21100000]])],
-    [30, new Map([["success", 1], ["maintain", 40], ["degraded", 85], ["destroyed", 100], ["cost", 24200000]])],
-]);
+class EnhancementTable {
+    constructor() {
+        this.et = new Map()
+    }
+
+    /**
+     * @param {number} enhancementNumber 
+     * @param {number} successRate
+     * @param {number} maintainRate
+     * @param {number} degradeRate
+     * @param {number} destroyRate
+     * @param {number} cost
+     */
+    addEntry(enhancementNumber, successRate, maintainRate, degradeRate, destroyRate, cost) {
+        this.et.set(enhancementNumber, new Map([
+            ["success", successRate],
+            ["maintain", maintainRate],
+            ["degraded", degradeRate],
+            ["destroyed", destroyRate],
+            ["cost", cost]
+        ]))
+    }
+    
+    getEnhancementNumber(n) {
+        return this.et.get(n)
+    }
+
+    showTable() {
+        console.log(et)
+    }
+}
+
+var enhancementTable = new EnhancementTable();
+enhancementTable.addEntry(1, 100, 0, 0, 0, 10000)
+enhancementTable.addEntry(2, 95, 100, 0, 0, 15000)
+enhancementTable.addEntry(3, 90, 100, 0, 0, 20000)
+enhancementTable.addEntry(4, 85, 100, 0, 0, 55000)
+enhancementTable.addEntry(5, 80, 100, 0, 0, 100000)
+enhancementTable.addEntry(6, 75, 100, 0, 0, 200000)
+enhancementTable.addEntry(7, 70, 100, 0, 0, 300000)
+enhancementTable.addEntry(8, 65, 100, 0, 0, 400000)
+enhancementTable.addEntry(9, 60, 100, 0, 0, 600000)
+enhancementTable.addEntry(10, 55, 100, 0, 0,   800000)
+enhancementTable.addEntry(11, 50, 85, 95, 100, 1000000)
+enhancementTable.addEntry(12, 45, 85, 95, 100, 1400000)
+enhancementTable.addEntry(13, 40, 80, 95, 100, 1800000)
+enhancementTable.addEntry(14, 35, 80, 95, 100, 2200000)
+enhancementTable.addEntry(15, 30, 75, 95, 100, 2600000)
+enhancementTable.addEntry(16, 25, 75, 95, 100, 3000000)
+enhancementTable.addEntry(17, 20, 70, 95, 100, 3500000)
+enhancementTable.addEntry(18, 15, 70, 95, 100, 4000000)
+enhancementTable.addEntry(19, 10, 65, 95, 100, 4500000)
+enhancementTable.addEntry(20, 5, 65, 95, 100, 5000000)
+enhancementTable.addEntry(21, 1, 50, 90, 100, 6000000)
+enhancementTable.addEntry(22, 1, 50, 90, 100, 7000000)
+enhancementTable.addEntry(23, 1, 50, 90, 100, 8000000)
+enhancementTable.addEntry(24, 1, 50, 90, 100, 9000000)
+enhancementTable.addEntry(25, 1, 50, 90, 100, 10000000)
+enhancementTable.addEntry(26, 1, 40, 85, 100, 11800000)
+enhancementTable.addEntry(27, 1, 40, 85, 100, 14900000)
+enhancementTable.addEntry(28, 1, 40, 85, 100, 18000000)
+enhancementTable.addEntry(29, 1, 40, 85, 100, 21100000)
+enhancementTable.addEntry(30, 1, 40, 85, 100, 24200000)
 
 // Getting "lucky" assumes an extra 5% is added to the probability of success, taken away from the
 // probability of maintain.
-function applyLuckMinigame() {
-    for (enhancement in enhancementTable) {
-        enhancement.set('success') = enhancement.get('success') + 5;
-        enhancement.set('maintain') = enhancement.get('maintain') - 5;
-    }
-}
+function applyLuckMinigame() {}
 
-function applyLuckyScroll() {
-    for (enhancement in enhancementTable) {
-        enhancement.set('success') = enhancement.get('success') + 5;
-        enhancement.set('maintain') = enhancement.get('maintain') - 5;
-    }
-}
+function applyLuckyScroll() {}
 
-function applyShieldScroll() {
+function applyShieldScroll() {}
 
-}
-
-function applyShieldingScroll() {
-    
-}
+function applyShieldingScroll() {}
 
 function getStarInputs() {
     var startStars = document.getElementById('start-stars') || Map();
@@ -103,58 +120,105 @@ function checkValidStarInput () {
     }
 }
 
+function successfulAttempt(currentSf, totalAttempts) {
+    return `
+    <p>
+    <b>Attempt ${totalAttempts}</b><br/>
+    <span style='color:green'>Success!</span> SF ${currentSf} => SF ${currentSf + 1}
+    </p>
+    `
+}
+
+function maintainedAttempt(currentSf, totalAttempts) {
+    return `
+    <p>
+    <b>Attempt ${totalAttempts} </b><br/>
+    <span style='color:black'>Maintained!</span> SF ${currentSf} => SF ${currentSf}
+    </p>
+    `
+}
+
+function degradedAttempt(currentSf, totalAttempts) {
+    return `
+    <p>
+    <b>Attempt ${totalAttempts} </b><br/>
+    <span style='color:blue'>Degraded!</span> SF ${currentSf} => SF ${currentSf - 1}
+    </p>
+    `
+}
+
+function destroyedAttempt(currentSf, totalAttempts) {
+    return `
+    <p>
+    <b>Attempt ${totalAttempts} </b><br/>
+    <span style='color:red'>Destroyed!</span> SF ${currentSf}
+    </p>
+    `
+}
+
+function computeAttemptResult(n, nextEnhancement) {
+    if (n < nextEnhancement.get("success")) {
+        return "success"
+    } else if (n < nextEnhancement.get("maintain")) {
+        return "maintain"
+    } else if (n < nextEnhancement.get("degraded")) {
+        return "degraded"
+    } else if (n < nextEnhancement.get("destroyed")) {
+        return "destroyed"
+    }
+}
+
 /**
  * Function to simulate the probabilities of star force enhancement,
  * given the start and end star force values from the user.
  */
-function simulateEnhancement () {
-    var outputLog = document.getElementById('output');
-    outputLog.innerHTML = "";
+function simulateEnhancement() {
+    var simulationDisplay = document.getElementById('simulation-output');
     var starValues = getStarInputs();
     var currentMesos = 0;
-    var attempts = 1;
+    var totalAttempts = 1;
     var currentSf = starValues.get('start');
     var destroyed = false;
+
+    simulationDisplay.innerHTML = "";
+    
     while (currentSf < starValues.get('end') && !destroyed) {
-        var nextEnhancement = enhancementTable.get(currentSf + 1);
+        var nextEnhancement = enhancementTable.getEnhancementNumber(currentSf + 1);
         var randomNum = Math.floor(Math.random() * 100); // 0 - 99
-        console.log(randomNum);
-        var output1 = document.createElement('p');
-        output1.innerHTML = "<b>Attempt " + attempts + "</b><br />";
+        var attemptOutput = document.createElement('p');
+        var attemptResult = computeAttemptResult(randomNum, nextEnhancement)
         currentMesos += nextEnhancement.get("cost");
-        if (randomNum < nextEnhancement.get("success")) {
-            output1.innerHTML += "<span style='color:green'>Success!</span> SF" + currentSf + " => SF" + (currentSf + 1);
+
+        switch (attemptResult) {
+        case "success":
+            attemptOutput.innerHTML += successfulAttempt(currentSf, totalAttempts);
             currentSf++;
-        } else if (randomNum < nextEnhancement.get("maintain")) {
-            output1.innerHTML += "Maintained! SF" + currentSf + " => SF" + currentSf;
-        } else if (randomNum < nextEnhancement.get("degraded")) {
-            output1.innerHTML += "<span style='color:blue'>Degraded!</span> SF" + currentSf + " => SF" + (currentSf - 1);
+            break;
+        case "maintain":
+            attemptOutput.innerHTML += maintainedAttempt(currentSf, totalAttempts);
+            break;
+        case "degraded":
+            attemptOutput.innerHTML += degradedAttempt(currentSf, totalAttempts);
             currentSf--;
-        } else if (randomNum < nextEnhancement.get("destroyed")) {
-            output1.innerHTML += "<span style='color:red'>Destroyed!</span> SF" + currentSf;
-            // destroyed = true;
-            destroyed =  document.getElementById('continue').checked ? false : true;
+            break;
+        case "destroyed":
+            attemptOutput.innerHTML += destroyedAttempt(currentSf, totalAttempts);
+            destroyed = true;
+            break
         }
 
-        output1.innerHTML += "<br />" + "Total Mesos: " + currentMesos.toLocaleString() + "<br />";
-        outputLog.appendChild(output1);
-        attempts++;
+        attemptOutput.innerHTML += "<br />" + "Total Mesos: " + currentMesos.toLocaleString() + "<br />";
+        simulationDisplay.appendChild(attemptOutput);
+        totalAttempts++;
     }
 
-    var end = document.createElement('p');
-    end.innerHTML = "<b>----- End of Simulation -----</b>";
-    end.style.textAlign = 'center';
-    outputLog.appendChild(end);
+    document.getElementById('simulation-end').innerHTML =  "<b>----- End of Simulation -----</b>";
 }
 
 /**
  * Function to clear the logs outputted from the simulation.
  */
 function clearOutput() {
-    var outputLog = document.getElementById('output');
-    outputLog.innerHTML = "";
-}
-
-function renderHTML() {
-
+    var simulationDisplay = document.getElementById('output');
+    simulationDisplay.innerHTML = "";
 }
