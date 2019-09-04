@@ -1,62 +1,47 @@
 <!DOCTYPE html>
-<html style="overflow-y: scroll">
+<html lang="en">
+
 <head>
     <title>Enhancement Simulator</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="index.css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>        
+    <link rel="stylesheet" href="index.css" />
 </head>
 
 <body>
-
-    <!-- Header -->
-    <header class="pt-3 mb-3" style="background-color: #D5F6FE; color: #5D5D5D;">
+    <header>
+        <div> <h1>MapleStory M Enhancement Simulator</h1> </div>
         <div>
-            <div class="col-md" style="text-align: center;">
-                <h4>MapleStory M Enhancement Simulator</h4>
-            </div>
-        </div>
-        <div>
-            <div class="col-md" style="width: 50%; margin: auto; text-align: center; padding-bottom: 1rem;">
-                <div>
-                    A basic RNG application for MSM star force enhancing that simulates total number of attempts and
-                    mesos spent to reach a given star force level. For more information about  
-                    enhancing and forging equipment, check out this 
-                    <a href="https://www.reddit.com/r/MapleStoryM/comments/976cg3/sea_maplestorym_cm_guide_part_1_item_forge/">reddit guide</a>.
-                </div>
-                <div class="mt-1">
-                    Probabilities used here are based off of <a href="https://lukishi.com/enhancement-table/" target="_blank">Lukishi's Enhancement Chart.</a>
-                </div>
-            </div>
+            A basic RNG application for MSM star force enhancing that simulates total number of attempts and mesos spent to reach a given star force level. For more information about enhancing and forging equipment, check out this <a href="https://www.reddit.com/r/MapleStoryM/comments/976cg3/sea_maplestorym_cm_guide_part_1_item_forge/">reddit guide</a>.
+            Probabilities used here are based off of <a href="https://lukishi.com/enhancement-table/" target="_blank">Lukishi's Enhancement Chart</a> 
         </div>
     </header>
 
-    <div class="container-fluid" style="max-width: 28rem; padding-left: 2rem; padding-right: 2rem">
+    <div>
         <form>
-            <div class="form-group row">    
-                <label class="col-sm-6 col-form-label" style="padding-left: 0">Starting Star Force: </label>
-                <select class="form-control col-sm-6" id="startStars" onchange="checkValidStarInput()"></select>
+            <div>
+                <label>Starting Star Force: </label>
+                <select id="start-stars" onchange="checkValidStarInput()"></select>
             </div>
-            <div class="form-group row">    
-                <label class="col-sm-6 col-form-label" style="padding-left: 0">End Star Force: </label>
-                <select class="form-control col-sm-6" id="endStars" onchange="checkValidStarInput()"></select>
+
+            <label>End Star Force: </label>
+            <select id="end-stars" onchange="checkValidStarInput()"></select>
+
+            <div>
+                <button type="button" id="start-simulation" onclick="simulateEnhancement()">Start</button>
+                <button type="button" id="clear-simulation" onclick="clearOutput()">Clear</button>
             </div>
-            <!-- <div class="form-group row">    
-                <label>
-                    <input type="checkbox" id="continue" class="input-checkbox">Continue if destroyed
-                </label>
-            </div> -->
-            <div class="text-center mb-3">
-                <button type="button" class="btn btn-primary" id="startSimulation" onclick="simulateEnhancement()">Start</button>
-                <button type="button" class="btn btn-secondary" id="clearSimulation" onclick="clearOutput()">Clear</button>
-            </div>
+
         </form>
-        <div class="output">
-            <div id="output"></div>
+
+        <div id="output">
+            <p id="simulation-output"></p>
+            <p style="text-align: center" id="simulation-end"></p>
         </div>
+
     </div>
+
     <script type="text/javascript" src="simulate.js"></script>
 </body>
+
 </html>
